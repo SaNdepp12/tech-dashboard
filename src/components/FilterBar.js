@@ -1,0 +1,4 @@
+import { jsxs as _jsxs, jsx as _jsx } from "react/jsx-runtime";
+export function FilterBar({ filters }) {
+    return (_jsx("div", { className: "bg-white border border-gray-200 rounded-lg p-4 mb-6 shadow-sm", children: _jsx("div", { className: "flex items-center gap-4 flex-wrap", children: filters.map((filter, index) => (_jsxs("div", { className: "flex items-center gap-2", children: [_jsxs("label", { className: "text-sm text-gray-600", children: [filter.label, ":"] }), _jsx("select", { value: filter.value, onChange: (e) => filter.onChange(e.target.value), className: "px-3 py-1.5 border border-gray-300 rounded-lg text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-[#004C8F] focus:border-[#004C8F]", children: filter.options.map((option, optIndex) => (_jsx("option", { value: option, children: option }, optIndex))) })] }, index))) }) }));
+}
