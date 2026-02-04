@@ -1,0 +1,4 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+export function DataTable({ columns, data }) {
+    return (_jsx("div", { className: "overflow-x-auto", children: _jsxs("table", { className: "w-full", children: [_jsx("thead", { children: _jsx("tr", { className: "border-b-2 border-[#004C8F] bg-gray-50", children: columns.map((column, index) => (_jsx("th", { className: "text-left py-3 px-4 text-sm text-gray-700 font-semibold", children: column.header }, index))) }) }), _jsx("tbody", { children: data.map((row, rowIndex) => (_jsx("tr", { className: "border-b border-gray-100 hover:bg-gray-50", children: columns.map((column, colIndex) => (_jsx("td", { className: "py-3 px-4 text-sm text-gray-900", children: column.render ? column.render(row[column.accessor], row) : row[column.accessor] }, colIndex))) }, rowIndex))) })] }) }));
+}

@@ -1,0 +1,24 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { KPICard } from "../../components/KPICard";
+import { ChartContainer } from "../../components/ChartContainer";
+import { AlertCircle, Activity, TrendingUp, TrendingDown, Zap, Server } from "lucide-react";
+import { LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
+const systemHealthData = [
+    { time: "00:00", uptime: 99.9, errorRate: 0.1, responseTime: 245 },
+    { time: "04:00", uptime: 99.8, errorRate: 0.2, responseTime: 268 },
+    { time: "08:00", uptime: 99.7, errorRate: 0.3, responseTime: 312 },
+    { time: "12:00", uptime: 99.9, errorRate: 0.1, responseTime: 289 },
+    { time: "16:00", uptime: 99.8, errorRate: 0.2, responseTime: 305 },
+    { time: "20:00", uptime: 99.9, errorRate: 0.1, responseTime: 256 },
+];
+const requestVolumeData = [
+    { time: "00:00", requests: 1200, success: 1188, failed: 12 },
+    { time: "04:00", requests: 850, success: 835, failed: 15 },
+    { time: "08:00", requests: 2800, success: 2756, failed: 44 },
+    { time: "12:00", requests: 3500, success: 3465, failed: 35 },
+    { time: "16:00", requests: 3200, success: 3168, failed: 32 },
+    { time: "20:00", requests: 2100, success: 2079, failed: 21 },
+];
+export function TechnicalOverview() {
+    return (_jsxs("div", { className: "p-8", children: [_jsxs("div", { className: "mb-6 pb-4 border-b-2 border-[#004C8F]", children: [_jsx("h2", { className: "text-gray-900 font-semibold text-xl", children: "Technical Overview" }), _jsx("p", { className: "text-gray-500 text-sm mt-1", children: "Real-time system performance and health metrics" })] }), _jsxs("div", { className: "grid grid-cols-6 gap-4 mb-6", children: [_jsx(KPICard, { title: "System Uptime", value: "99.8%", icon: Activity, trend: { value: "0.2% from last week", isPositive: true }, variant: "success" }), _jsx(KPICard, { title: "Avg Response Time", value: "279ms", icon: Zap, subtitle: "p95: 450ms" }), _jsx(KPICard, { title: "Total Errors (24h)", value: "159", icon: AlertCircle, variant: "danger", trend: { value: "12% decrease", isPositive: true } }), _jsx(KPICard, { title: "API Success Rate", value: "98.9%", icon: TrendingUp, variant: "success" }), _jsx(KPICard, { title: "Active Sessions", value: "8,432", icon: Server, subtitle: "Peak: 12,500" }), _jsx(KPICard, { title: "Error Rate", value: "0.15%", icon: TrendingDown, variant: "success", trend: { value: "0.05% improvement", isPositive: true } })] }), _jsxs("div", { className: "grid grid-cols-2 gap-6 mb-6", children: [_jsx(ChartContainer, { title: "System Uptime & Error Rate", subtitle: "Last 24 hours monitoring", children: _jsx(ResponsiveContainer, { width: "100%", height: 280, children: _jsxs(LineChart, { data: systemHealthData, children: [_jsx(CartesianGrid, { strokeDasharray: "3 3", stroke: "#e5e7eb" }), _jsx(XAxis, { dataKey: "time", tick: { fill: '#6b7280', fontSize: 12 } }), _jsx(YAxis, { tick: { fill: '#6b7280', fontSize: 12 } }), _jsx(Tooltip, {}), _jsx(Legend, {}), _jsx(Line, { type: "monotone", dataKey: "uptime", stroke: "#10b981", strokeWidth: 2, name: "Uptime %", dot: { fill: '#10b981', r: 3 } }), _jsx(Line, { type: "monotone", dataKey: "errorRate", stroke: "#ED1C24", strokeWidth: 2, name: "Error Rate %", dot: { fill: '#ED1C24', r: 3 } })] }) }) }), _jsx(ChartContainer, { title: "Average Response Time", subtitle: "Latency across all endpoints", children: _jsx(ResponsiveContainer, { width: "100%", height: 280, children: _jsxs(AreaChart, { data: systemHealthData, children: [_jsx(CartesianGrid, { strokeDasharray: "3 3", stroke: "#e5e7eb" }), _jsx(XAxis, { dataKey: "time", tick: { fill: '#6b7280', fontSize: 12 } }), _jsx(YAxis, { tick: { fill: '#6b7280', fontSize: 12 }, label: { value: 'ms', angle: -90, position: 'insideLeft', fill: '#6b7280', fontSize: 12 } }), _jsx(Tooltip, {}), _jsx(Area, { type: "monotone", dataKey: "responseTime", stroke: "#004C8F", fill: "#004C8F", fillOpacity: 0.3, strokeWidth: 2 })] }) }) })] }), _jsx(ChartContainer, { title: "API Request Volume", subtitle: "Successful vs failed requests over 24 hours", children: _jsx(ResponsiveContainer, { width: "100%", height: 300, children: _jsxs(AreaChart, { data: requestVolumeData, children: [_jsx(CartesianGrid, { strokeDasharray: "3 3", stroke: "#e5e7eb" }), _jsx(XAxis, { dataKey: "time", tick: { fill: '#6b7280', fontSize: 12 } }), _jsx(YAxis, { tick: { fill: '#6b7280', fontSize: 12 }, label: { value: 'Requests', angle: -90, position: 'insideLeft', fill: '#6b7280', fontSize: 12 } }), _jsx(Tooltip, {}), _jsx(Legend, {}), _jsx(Area, { type: "monotone", dataKey: "success", stackId: "1", stroke: "#10b981", fill: "#10b981", fillOpacity: 0.7, name: "Success" }), _jsx(Area, { type: "monotone", dataKey: "failed", stackId: "1", stroke: "#ED1C24", fill: "#ED1C24", fillOpacity: 0.7, name: "Failed" })] }) }) })] }));
+}
